@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tutorial 2</title>
+    <title>Tutorial 2: Visualization Techniques</title>
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <header>
-        <h1>Tutorial 2: Data Visualization Techniques</h1>
+        <h1>Tutorial 2: Visualization Techniques</h1>
         <nav>
             <a href="../index.html">Home</a>
             <a href="tutorial1.html">Tutorial 1</a>
@@ -20,21 +20,21 @@
         <article>
             <h2>Using Chart.js for Bar Charts</h2>
             <p>Chart.js is a powerful library for creating interactive charts. In this example, we'll create a bar chart to visualize the top 10 countries by COVID-19 cases.</p>
-            <h3>Example: Creating a Bar Chart</h3>
-            <pre><code>
-// Include Chart.js in your HTML
-&lt;script src="https://cdn.jsdelivr.net/npm/chart.js"&gt;&lt;/script&gt;
-
-// HTML for the canvas element
-&lt;canvas id="covidChart"&gt;&lt;/canvas&gt;
-
-// JavaScript code
-fetch('https://disease.sh/v3/covid-19/countries')
-    .then(response =&gt; response.json())
-    .then(data =&gt; {
-        const top10Countries = data.sort((a, b) =&gt; b.cases - a.cases).slice(0, 10);
-        const labels = top10Countries.map(country =&gt; country.country);
-        const cases = top10Countries.map(country =&gt; country.cases);
+            <h3>Step-by-Step Guide</h3>
+            <ol>
+                <li>Include Chart.js in your HTML:
+                    <pre><code>&lt;script src="https://cdn.jsdelivr.net/npm/chart.js"&gt;&lt;/script&gt;</code></pre>
+                </li>
+                <li>Add a canvas element for the chart:
+                    <pre><code>&lt;canvas id="covidChart"&gt;&lt;/canvas&gt;</code></pre>
+                </li>
+                <li>Fetch and visualize the data with JavaScript:
+                    <pre><code>fetch('https://disease.sh/v3/covid-19/countries')
+    .then(response => response.json())
+    .then(data => {
+        const top10Countries = data.sort((a, b) => b.cases - a.cases).slice(0, 10);
+        const labels = top10Countries.map(country => country.country);
+        const cases = top10Countries.map(country => country.cases);
 
         const ctx = document.getElementById('covidChart').getContext('2d');
         new Chart(ctx, {
@@ -58,20 +58,23 @@ fetch('https://disease.sh/v3/covid-19/countries')
             }
         });
     });
-            </code></pre>
+                    </code></pre>
+                </li>
+            </ol>
+
             <h2>Using Leaflet.js for Map Visualizations</h2>
-            <p>Leaflet.js is a leading open-source JavaScript library for mobile-friendly interactive maps.</p>
-            <h3>Example: Creating an Interactive Map</h3>
-            <pre><code>
-// Include Leaflet.js in your HTML
-&lt;link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" /&gt;
-&lt;script src="https://unpkg.com/leaflet/dist/leaflet.js"&gt;&lt;/script&gt;
-
-// HTML for the map container
-&lt;div id="map" style="height: 500px;"&gt;&lt;/div&gt;
-
-// JavaScript code
-const map = L.map('map').setView([20, 0], 2);
+            <p>Leaflet.js is a leading open-source JavaScript library for mobile-friendly interactive maps. In this example, we'll create an interactive map with weather data for several cities.</p>
+            <h3>Step-by-Step Guide</h3>
+            <ol>
+                <li>Include Leaflet.js in your HTML:
+                    <pre><code>&lt;link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" /&gt;
+&lt;script src="https://unpkg.com/leaflet/dist/leaflet.js"&gt;&lt;/script&gt;</code></pre>
+                </li>
+                <li>Add a div element for the map:
+                    <pre><code>&lt;div id="map" style="height: 500px;"&gt;&lt;/div&gt;</code></pre>
+                </li>
+                <li>Fetch and visualize the data with JavaScript:
+                    <pre><code>const map = L.map('map').setView([20, 0], 2);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map);
@@ -79,15 +82,17 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 const cities = ['London', 'New York', 'Tokyo', 'Sydney'];
 const apiKey = 'YOUR_API_KEY';
 
-cities.forEach(city =&gt; {
+cities.forEach(city => {
     fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
-        .then(response =&gt; response.json())
-        .then(data =&gt; {
+        .then(response => response.json())
+        .then(data => {
             const marker = L.marker([data.coord.lat, data.coord.lon]).addTo(map);
             marker.bindPopup(`&lt;b&gt;${city}&lt;/b&gt;&lt;br&gt;Temperature: ${(data.main.temp - 273.15).toFixed(2)}°C`);
         });
 });
-            </code></pre>
+                    </code></pre>
+                </li>
+            </ol>
         </article>
     </main>
 </body>
