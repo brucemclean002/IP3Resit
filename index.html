@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Visualization App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+    <header>
+        <h1>Data Visualization App</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="tutorials/tutorial1.html">Tutorial 1</a>
+            <a href="tutorials/tutorial2.html">Tutorial 2</a>
+            <a href="author.html">Author</a>
+        </nav>
+    </header>
+    <main>
+        <section id="covid-data">
+            <h2>COVID-19 Data</h2>
+            <canvas id="covidChart"></canvas>
+        </section>
+        <section id="weather-data">
+            <h2>Weather Data</h2>
+            <div id="map" style="height: 500px;"></div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
