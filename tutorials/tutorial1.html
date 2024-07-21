@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tutorial 1</title>
+    <title>Tutorial 2</title>
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <header>
-        <h1>Tutorial 1: Sourcing Data and Understanding APIs</h1>
+        <h1>Tutorial 2: Data Visualization Techniques</h1>
         <nav>
             <a href="../index.html">Home</a>
             <a href="tutorial1.html">Tutorial 1</a>
@@ -18,15 +18,41 @@
     </header>
     <main>
         <article>
-            <h2>Finding Data Sources</h2>
-            <p>... (content goes here) ...</p>
-            <h2>Accessing Data via APIs</h2>
-            <p>... (content goes here) ...</p>
+            <h2>Using Chart.js for Line Charts</h2>
+            <p>Chart.js is a simple yet flexible JavaScript charting library for designers & developers.</p>
+            <h3>Example: Creating a Line Chart</h3>
             <pre><code>
-// Example API call using JavaScript
-fetch('https://api.covid19api.com/summary')
-    .then(response => response.json())
-    .then(data => console.log(data));
+// Example Chart.js code
+const ctx = document.getElementById('covidChart').getContext('2d');
+const myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['January', 'February', 'March', 'April', 'May'],
+        datasets: [{
+            label: 'COVID-19 Cases',
+            data: [10, 20, 30, 40, 50],
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+            </code></pre>
+            <h2>Using Leaflet.js for Map Visualizations</h2>
+            <p>Leaflet is an open-source JavaScript library for mobile-friendly interactive maps.</p>
+            <h3>Example: Creating an Interactive Map</h3>
+            <pre><code>
+// Example Leaflet.js code
+const map = L.map('map').setView([51.505, -0.09], 13);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
             </code></pre>
         </article>
     </main>
