@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tutorial 2</title>
+    <title>Tutorial 1: Sourcing Data</title>
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <header>
-        <h1>Tutorial 2: Data Visualization Techniques</h1>
+        <h1>Tutorial 1: Sourcing Data, Data Content and Structure, API Access</h1>
         <nav>
             <a href="../index.html">Home</a>
             <a href="tutorial1.html">Tutorial 1</a>
@@ -18,42 +18,40 @@
     </header>
     <main>
         <article>
-            <h2>Using Chart.js for Line Charts</h2>
-            <p>Chart.js is a simple yet flexible JavaScript charting library for designers & developers.</p>
-            <h3>Example: Creating a Line Chart</h3>
+            <h2>Where to Source Data</h2>
+            <p>Finding reliable and interesting data sources is crucial for effective data visualization. Some popular sources for data include:</p>
+            <ul>
+                <li><a href="https://www.cdc.gov/coronavirus/2019-ncov/cases-updates/index.html">CDC COVID-19 Data</a></li>
+                <li><a href="https://openweathermap.org/">OpenWeatherMap</a></li>
+                <li><a href="https://data.gov/">Data.gov</a></li>
+                <li><a href="https://data.world/">Data.World</a></li>
+            </ul>
+            <h2>Data Content and Structure</h2>
+            <p>Understanding the structure and content of your data is important for visualization. Data is often structured in JSON or CSV formats, and typical elements include:</p>
+            <ul>
+                <li><strong>Attributes:</strong> Characteristics or properties of the data (e.g., temperature, date, location).</li>
+                <li><strong>Records:</strong> Individual entries in the dataset (e.g., a day's weather data).</li>
+            </ul>
+            <h3>Example JSON Structure:</h3>
+            <pre><code>{
+    "city": "London",
+    "temperature": "15°C",
+    "date": "2024-07-21"
+}</code></pre>
+            <h2>API Access</h2>
+            <p>APIs (Application Programming Interfaces) allow you to access data from external sources programmatically. To use an API, you typically need to:</p>
+            <ol>
+                <li>Register for an API key if required.</li>
+                <li>Understand the API endpoints and parameters.</li>
+                <li>Make HTTP requests to the API.</li>
+            </ol>
+            <h3>Example API Call:</h3>
             <pre><code>
-// Example Chart.js code
-const ctx = document.getElementById('covidChart').getContext('2d');
-const myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: ['January', 'February', 'March', 'April', 'May'],
-        datasets: [{
-            label: 'COVID-19 Cases',
-            data: [10, 20, 30, 40, 50],
-            borderColor: 'rgba(75, 192, 192, 1)',
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
-});
-            </code></pre>
-            <h2>Using Leaflet.js for Map Visualizations</h2>
-            <p>Leaflet is an open-source JavaScript library for mobile-friendly interactive maps.</p>
-            <h3>Example: Creating an Interactive Map</h3>
-            <pre><code>
-// Example Leaflet.js code
-const map = L.map('map').setView([51.505, -0.09], 13);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors'
-}).addTo(map);
-            </code></pre>
+// Fetch COVID-19 data
+fetch('https://disease.sh/v3/covid-19/all')
+    .then(response => response.json())
+    .then(data => console.log(data));
+</code></pre>
         </article>
     </main>
 </body>
