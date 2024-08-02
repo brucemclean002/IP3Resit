@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const apiKey = '99a8a3e7348687124a0143956396cef5';
 
     cities.forEach(city => {
-        fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
             .then(response => response.json())
             .then(data => {
                 const marker = L.marker([data.coord.lat, data.coord.lon]).addTo(map);
